@@ -41,10 +41,10 @@ RUN adduser --uid 1000 --gecos '' --disabled-password wocker \
 #
 # php.ini settings
 #
-RUN sed -i -e "s/^upload_max_filesize.*/upload_max_filesize = 32M/" /etc/php7/apache2/php.ini \
-    && sed -i -e "s/^post_max_size.*/post_max_size = 64M/" /etc/php7/apache2/php.ini \
-    && sed -i -e "s/^display_errors.*/display_errors = On/" /etc/php7/apache2/php.ini \
-    && sed -i -e "s/^;mbstring.internal_encoding.*/mbstring.internal_encoding = UTF-8/" /etc/php5/apache2/php.ini
+RUN sed -i -e "s/^upload_max_filesize.*/upload_max_filesize = 32M/" /etc/php/7.0/apache2/php.ini \
+    && sed -i -e "s/^post_max_size.*/post_max_size = 64M/" /etc/php/7.0/apache2/php.ini \
+    && sed -i -e "s/^display_errors.*/display_errors = On/" /etc/php/7.0/apache2/php.ini \
+    && sed -i -e "s/^;mbstring.internal_encoding.*/mbstring.internal_encoding = UTF-8/" /etc/php/7.0/apache2/php.ini
 
 #
 # Install WP-CLI
