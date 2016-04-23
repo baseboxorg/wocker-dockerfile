@@ -1,23 +1,23 @@
-FROM debian:jessie
-MAINTAINER ixkaito <ixkaito@gmail.com>
+FROM debian:stretch
+MAINTAINER BaseBoxOrg <develoer@basebox.org>
 
 RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get clean \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       apache2 \
-      libapache2-mod-php5 \
-      php5 \
-      php5-cli \
-      php5-gd \
-      php5-mysql \
-      php5-curl \
-      mysql-server \
-      mysql-client \
+      libapache2-mod-php7.0 \
+      php7.0 \
+      php7.0-cli \
+      php7.0-gd \
+      php7.0-mysql \
+      php7.0-curl \
+      mariadb-server \
+      mariadb-client \
       curl \
       supervisor \
       ca-certificates \
-      vim \
+      nano \
       less \
     && rm -rf /var/lib/apt/lists/*
 
@@ -41,9 +41,9 @@ RUN adduser --uid 1000 --gecos '' --disabled-password wocker \
 #
 # php.ini settings
 #
-RUN sed -i -e "s/^upload_max_filesize.*/upload_max_filesize = 32M/" /etc/php5/apache2/php.ini \
-    && sed -i -e "s/^post_max_size.*/post_max_size = 64M/" /etc/php5/apache2/php.ini \
-    && sed -i -e "s/^display_errors.*/display_errors = On/" /etc/php5/apache2/php.ini \
+RUN sed -i -e "s/^upload_max_filesize.*/upload_max_filesize = 32M/" /etc/php7/apache2/php.ini \
+    && sed -i -e "s/^post_max_size.*/post_max_size = 64M/" /etc/php7/apache2/php.ini \
+    && sed -i -e "s/^display_errors.*/display_errors = On/" /etc/php7/apache2/php.ini \
     && sed -i -e "s/^;mbstring.internal_encoding.*/mbstring.internal_encoding = UTF-8/" /etc/php5/apache2/php.ini
 
 #
